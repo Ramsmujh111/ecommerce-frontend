@@ -68,3 +68,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### Project descriptions Ecommerce Applications ###
+
+This sections contains the Ecommerce Web application with fully responsive 
+
+### Tech and Tools are use in this Project ###
+
+1.   React js For the UI design 
+     Tailwind css for customize ui
+     material ui for custom ui
+2.  Backend Technology like Node js
+
