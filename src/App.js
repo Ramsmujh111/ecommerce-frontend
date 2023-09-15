@@ -1,8 +1,13 @@
 import './App.css';
+import DiscountPage from './Components/utility/DiscountNav';
+import Navbar from './Components/Navbar/Navbar';
 
 function App() {
   return (
-      <div className="App">Welcome To Home page for E</div>
+      <>
+        <DiscountPage />
+        <Navbar />
+      </>
   );
 }
 
