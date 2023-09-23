@@ -1,12 +1,29 @@
 import React ,{useRef} from "react";
 import { Link } from "react-router-dom";
-import DensityMediumIcon from '@mui/icons-material/DensityMedium';
-import DangerousIcon from '@mui/icons-material/Dangerous';
+import { useNavigate } from "react-router-dom";
+// import DensityMediumIcon from '@mui/icons-material/DensityMedium';
+// import DangerousIcon from '@mui/icons-material/Dangerous';
 
 const Navbar = () =>{
-   // let Heading = ["About" , "Register" , "Login" , "Logout"];
-   // let ButtonStatus = useRef();
-   // let [status , setStatus] = React.useState(false);
+   const [checkLogin , setLogin] = React.useState();
+   let getAccess = localStorage.getItem('access');
+   let navigation = useNavigate();
+   React.useEffect(() => {
+      console.log(getAccess);
+      if(!getAccess){
+        return setLogin(false);
+      }
+      setLogin(true);
+   })
+   function Logout(){
+      localStorage.clear();
+      console.log(localStorage.clear());
+      let check = localStorage.getItem("access");
+      if(!check){
+          navigation('/')
+      }
+      console.log('localStorage are cleared');
+   }
    return (
       <>
         <nav className="flex flex-col items-center justify-start h-16 bg-orange-300 w-full sm:flex sm:flex-row sm:bg-teal-950">
@@ -17,10 +34,13 @@ const Navbar = () =>{
             </div>
                <ul className="flex flex-col items-center justify-between bg-lime-900 w-full origin-top sm:flex sm:flex-row sm: sm:bg-teal-950">
                     <li className="text-white sm:text-base"><Link to="/Product">Product</Link></li>
-                    <li className="text-white sm:text-base"><Link to="/Register">Register</Link></li>
-                    <li className="text-white sm:text-base"><Link to="/Login">Login</Link></li>
-                    <li className="text-white sm:text-base"><Link to="/Logout">Logout</Link></li>
-                  {/* <button className="text-white sm:hidden" onClick={() => setStatus(false)}><DangerousIcon  /></button> */}
+                    <li className="text-white sm:text-base"><Link to="/auth/Admin">Admin</Link></li>
+                    {
+                     !checkLogin ? <>
+                     <li className="text-white sm:text-base"><Link to="/Register">Register</Link></li>
+                     <li className="text-white sm:text-base"><Link to="/Login">Login</Link></li>
+                     </> : <li onClick={Logout} className="text-white sm:text-base"><Link to='/'>Logout</Link></li>
+                    }                  {/* <button className="text-white sm:hidden" onClick={() => setStatus(false)}><DangerousIcon  /></button> */}
                </ul> 
         </nav>
       </>
